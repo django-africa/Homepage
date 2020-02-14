@@ -103,3 +103,5 @@ benv
 
 # mypy
 .mypy_cache/
+
+.vscode
