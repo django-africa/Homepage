@@ -1,0 +1,7 @@
+{% extends "form.html" %}
+
+<div class = "pt-5 mt-5">
+    {% block form %}
+        {{ blog.content | safe }}
+    {% endblock form %}
+</div>

@@ -17,9 +17,23 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
+# from django.conf.urls import url
+from homepage.views import HomeView 
+from blog.views import ckeditor_form_view, PostDetailView
+
+
 
 urlpatterns = [
-    path('admin', admin.site.urls),
-    path('', include('homepage.urls')),
-
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('', HomeView.as_view(), name='home_view'),
+    path('blog/', ckeditor_form_view, name='ckeditor-form'),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('blog/<int:pk>/<slug:slug>/', PostDetailView.as_view(), 
+    name='detail'),
+    path('xxxxhas2/', admin.site.urls),
+] + static(
+    settings.STATIC_URL, 
+    document_root=settings.STATIC_ROOT
+) + static(
+    settings.MEDIA_URL,
+    document_root=settings.MEDIA_ROOT
+)
