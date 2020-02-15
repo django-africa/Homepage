@@ -55,8 +55,8 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'crispy_forms',
 
-    'homepage',
-    'blog',
+    'homepage.apps.HomepageConfig',
+    'blog.apps.BlogConfig',
 ]
 
 MIDDLEWARE = [
