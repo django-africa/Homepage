@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -330,7 +331,7 @@
           </div>
           <div class="col-lg-5 ml-auto pl-lg-5">
             <h2 class="text-black mb-4 h3 font-weight-bold">Our Mission</h2>
-            <p class="mb-4">Providing top notch web programingg knowledge through the use of Django webframework. 
+            <p class="mb-4">Providing top notch web programing knowledge through the use of Django webframework. 
             <q>The angel is free because of his knowledge, the beast because of his ignorance. Between the two remains the son of man to struggle.<q> - Rumi.</p>
             <ul class="ul-check mb-5 list-unstyled success">
               <li>Quality Online Session</li>
@@ -593,60 +594,16 @@
         </div>
         <div class="row justify-content-center">
           <div class="col-lg-7 mb-5">
-
-            
-
-            <form action="#" class="p-5 bg-white">
-              
-              <h2 class="h4 text-black mb-5">Contact Form</h2> 
-
-              <div class="row form-group">
-                <div class="col-md-6 mb-3 mb-md-0">
-                  <label class="text-black" for="fname">First Name</label>
-                  <input type="text" id="fname" class="form-control rounded-0">
-                </div>
-                <div class="col-md-6">
-                  <label class="text-black" for="lname">Last Name</label>
-                  <input type="text" id="lname" class="form-control rounded-0">
-                </div>
-              </div>
-
-              <div class="row form-group">
-                
-                <div class="col-md-12">
-                  <label class="text-black" for="email">Email</label> 
-                  <input type="email" id="email" class="form-control rounded-0">
-                </div>
-              </div>
-
-              <div class="row form-group">
-                
-                <div class="col-md-12">
-                  <label class="text-black" for="subject">Subject</label> 
-                  <input type="subject" id="subject" class="form-control rounded-0">
-                </div>
-              </div>
-
+            <form method="post">
               <div class="row form-group">
                 <div class="col-md-12">
-                  <label class="text-black" for="message">Message</label> 
-                  <textarea name="message" id="message" cols="30" rows="7" class="form-control rounded-0" placeholder="Leave your message here..."></textarea>
+                    {% csrf_token %}
+                    {% crispy form %}
+                    <input type="submit" value="Send Message" class="btn btn-primary mr-2 mb-2">
+                  </div>
                 </div>
-              </div>
-
-              <div class="row form-group">
-                <div class="col-md-12">
-                  <input type="submit" value="Send Message" class="btn btn-primary mr-2 mb-2">
-                </div>
-              </div>
-
-  
             </form>
-          </div>
-        
         </div>
-        
-      </div>
     </div>
 
     <div class="footer py-5 text-center">
@@ -654,11 +611,10 @@
         <div class="row mb-5">
           <div class="col-12">
             <p class="mb-0">
-              <a href="#" class="p-3"><span class="icon-facebook"></span></a>
+              {% comment %} <a href="#" class="p-3"><span class="icon-facebook"></span></a> {% endcomment %}
               <a href="#" class="p-3"><span class="icon-twitter"></span></a>
               <a href="#" class="p-3"><span class="icon-instagram"></span></a>
               <a href="#" class="p-3"><span class="icon-linkedin"></span></a>
-              <a href="#" class="p-3"><span class="icon-pinterest"></span></a>
             </p>
           </div>
         </div>
@@ -666,7 +622,7 @@
           <div class="col-md-12">
             <p class="mb-0">
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved  
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </p>
           </div>

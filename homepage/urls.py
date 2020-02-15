@@ -21,5 +21,5 @@ from .views import HomeView
 app_name = 'home'
 
 urlpatterns = [
-    url("", HomeView.as_view()),
+    url("", HomeView.as_view(), name='home_view'),
 ]
