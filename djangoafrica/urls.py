@@ -30,6 +30,7 @@ urlpatterns = [
     path('blog/<int:pk>/<slug:slug>/', PostDetailView.as_view(), 
     name='detail'),
     path('xxxxhas2/', admin.site.urls),
+    path('forum/', include('django_simple_forum.urls')),
 ] + static(
     settings.STATIC_URL, 
     document_root=settings.STATIC_ROOT

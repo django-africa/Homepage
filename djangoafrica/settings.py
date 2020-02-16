@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'crispy_forms',
+    'django_simple_forum',
 
     'homepage',
     'blog',
