@@ -2,6 +2,74 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0f68100-659e-41c1-ac3a-b7c7d9b802e7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/=12.5.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/facebook.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/migrations/0002_auto_20160628_1211.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/migrations/0003_topic_tags.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/migrations/0004_topic_no_of_likes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/migrations/0005_attachment.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/migrations/0006_forumcategory_description.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/migrations/0007_topic_no_of_votes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/migrations/0008_auto_20160707_1311.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/migrations/0009_userprofile_profile_pic.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/migrations/0010_forumcategory_parent.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/migrations/0011_facebook_github_google_twitter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/migrations/0012_comment_mentioned.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/migrations/0013_userprofile_send_mailnotifications.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/migrations/0014_auto_20170208_0550.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/mixins.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/sending_mail.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/static/css/bootstrap-suggest.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/static/css/dashboard.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/static/css/forum.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/static/css/jquery.tagsinput.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/static/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/static/css/ref.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/static/js/bootstrap-suggest.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/static/js/jquery.form.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/static/js/jquery.tagsinput.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/dashboard/badge_add.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/dashboard/badges.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/dashboard/categories.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/dashboard/category_add.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/dashboard/change_password.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/dashboard/dashboard.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/dashboard/dashboard_base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/dashboard/dashboard_login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/dashboard/edit_user.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/dashboard/topics.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/dashboard/users.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/dashboard/view_badge.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/dashboard/view_category.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/dashboard/view_topic.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/dashboard/view_user.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/emails/comment_add.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/emails/comment_mentioned.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/emails/new_topic.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/forum/badges.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/forum/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/forum/categories.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/forum/left_menu.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/forum/new_topic.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/forum/profile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/forum/tags.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/forum/topic_delete.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/forum/topic_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/forum/topics_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/forum/view_topic.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templatetags/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/templatetags/forum_tags.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_simple_forum/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/djangoafrica/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangoafrica/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/djangoafrica/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangoafrica/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/homepage/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/homepage/templates/base.html" afterDir="false" />
@@ -32,22 +100,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/djangoafrica/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="32" column="55" selection-start-line="32" selection-start-column="55" selection-end-line="32" selection-end-column="55" />
-              <folding>
-                <element signature="e#636#668#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28">
-              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+            <state relative-caret-position="294">
+              <caret line="43" column="69" selection-start-line="43" selection-start-column="69" selection-end-line="43" selection-end-column="69" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -55,28 +111,16 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/templatetags/forum_tags.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
-              <folding>
-                <element signature="e#0#27#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/templatetags/__init__.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/django_simple_forum/static/js/jquery.form.js">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="554" column="19" selection-start-line="554" selection-start-column="19" selection-end-line="554" selection-end-column="19" />
+            <state relative-caret-position="18130">
+              <caret line="1317" selection-start-line="1317" selection-end-line="1317" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -85,46 +129,60 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django/template/defaulttags.py">
+        <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/social_django/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="1024" selection-start-line="1024" selection-end-line="1024" />
+            <state relative-caret-position="294">
+              <caret line="114" column="28" selection-start-line="114" selection-start-column="28" selection-end-line="114" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/templates/forum/topic_list.html">
+        <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/social_django/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="38" selection-start-line="38" selection-end-line="38" />
+            <state relative-caret-position="14">
+              <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/djangoafrica/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="36" column="6" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="6" />
+              <folding>
+                <element signature="e#636#668#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/djangoafrica/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="212" column="34" selection-start-line="212" selection-start-column="34" selection-end-line="212" selection-end-column="34" />
+              <folding>
+                <element signature="e#313#322#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/templates/forum/categories.html">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/templates/forum/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="24" column="78" selection-start-line="24" selection-start-column="78" selection-end-line="24" selection-end-column="78" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/templates/forum/topics_list.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="14">
-              <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django/views/generic/list.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="141" column="42" lean-forward="true" selection-start-line="141" selection-start-column="42" selection-end-line="141" selection-end-column="42" />
+            <state relative-caret-position="316">
+              <caret line="133" column="63" selection-start-line="133" selection-start-column="63" selection-end-line="133" selection-end-column="63" />
             </state>
           </provider>
         </entry>
@@ -138,27 +196,17 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/homepage/templates/base.html" />
-        <option value="$PROJECT_DIR$/djangoafrica/settings.py" />
         <option value="$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/models.py" />
         <option value="$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/templatetags/forum_tags.py" />
-        <option value="$PROJECT_DIR$/djangoafrica/urls.py" />
         <option value="$PROJECT_DIR$/homepage/views.py" />
-        <option value="$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/mixins.py" />
-        <option value="$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/views.py" />
         <option value="$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/templates/forum/topic_list.html" />
-        <option value="$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/templates/forum/base.html" />
         <option value="$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/urls.py" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/Homepage.iml" />
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
-        <option value="$PROJECT_DIR$/.idea/modules.xml" />
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-        <option value="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+        <option value="$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/mixins.py" />
+        <option value="$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/static/css/forum.css" />
+        <option value="$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/views.py" />
+        <option value="$PROJECT_DIR$/djangoafrica/settings.py" />
+        <option value="$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/templates/forum/base.html" />
+        <option value="$PROJECT_DIR$/djangoafrica/urls.py" />
       </list>
     </option>
   </component>
@@ -174,7 +222,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -185,67 +232,36 @@
             <path>
               <item name="Homepage" type="b2602c69:ProjectViewProjectNode" />
               <item name="Homepage" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Homepage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Homepage" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Homepage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Homepage" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="python3.6" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Homepage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Homepage" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="python3.6" type="462c0819:PsiDirectoryNode" />
-              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Homepage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Homepage" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="python3.6" type="462c0819:PsiDirectoryNode" />
-              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
               <item name="django_simple_forum" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Homepage" type="b2602c69:ProjectViewProjectNode" />
               <item name="Homepage" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="python3.6" type="462c0819:PsiDirectoryNode" />
-              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
               <item name="django_simple_forum" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Homepage" type="b2602c69:ProjectViewProjectNode" />
               <item name="Homepage" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="python3.6" type="462c0819:PsiDirectoryNode" />
-              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
               <item name="django_simple_forum" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="forum" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Homepage" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -301,16 +317,19 @@
       <workItem from="1581802648071" duration="1645000" />
       <workItem from="1581882757268" duration="4468000" />
       <workItem from="1581889050997" duration="131000" />
+      <workItem from="1582026928825" duration="6115000" />
+      <workItem from="1582057726535" duration="2643000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11754000" />
+    <option name="totallyTimeSpent" value="22723000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="41" y="25" width="1325" height="743" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25720966" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2650039" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -324,12 +343,12 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.24198718" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.24198718" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32852563" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.32969603" />
       <window_info anchor="right" id="Database" order="4" weight="0.32969603" />
     </layout>
   </component>
@@ -341,13 +360,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="298" column="89" selection-start-line="298" selection-start-column="89" selection-end-line="298" selection-end-column="89" />
         </state>
       </provider>
     </entry>
@@ -373,37 +385,10 @@
     <entry file="file://$PROJECT_DIR$/djangoafrica/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/djangoafrica/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="55" column="18" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
-          <folding>
-            <element signature="e#313#322#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/homepage/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="14">
           <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/mixins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14">
-          <caret line="1" column="31" lean-forward="true" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/djangoafrica/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="32" column="55" selection-start-line="32" selection-start-column="55" selection-end-line="32" selection-end-column="55" />
-          <folding>
-            <element signature="e#636#668#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -414,10 +399,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/templatetags/forum_tags.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="826">
+          <caret line="61" selection-start-line="61" selection-end-line="61" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/templatetags/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/mixins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="32" column="32" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django/template/defaulttags.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
+        <state relative-caret-position="14028">
           <caret line="1024" selection-start-line="1024" selection-end-line="1024" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/templates/forum/topic_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
         </state>
       </provider>
     </entry>
@@ -428,30 +443,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/templatetags/forum_tags.py">
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1285">
+          <caret line="298" column="89" selection-start-line="298" selection-start-column="89" selection-end-line="298" selection-end-column="89" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/templatetags/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/templates/forum/topic_list.html">
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/static/css/forum.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        <state relative-caret-position="238">
+          <caret line="1001" column="25" selection-start-line="1001" selection-start-column="25" selection-end-line="1001" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="554" column="19" selection-start-line="554" selection-start-column="19" selection-end-line="554" selection-end-column="19" />
+        <state relative-caret-position="18130">
+          <caret line="1317" selection-start-line="1317" selection-end-line="1317" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
@@ -460,20 +469,63 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/templates/forum/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="24" column="78" selection-start-line="24" selection-start-column="78" selection-end-line="24" selection-end-column="78" />
+        <state relative-caret-position="316">
+          <caret line="133" column="63" selection-start-line="133" selection-start-column="63" selection-end-line="133" selection-end-column="63" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/urls.py">
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/templates/forum/categories.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/djangoafrica/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        <state relative-caret-position="176">
+          <caret line="212" column="34" selection-start-line="212" selection-start-column="34" selection-end-line="212" selection-end-column="34" />
+          <folding>
+            <element signature="e#313#322#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/djangoafrica/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="36" column="6" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="6" />
+          <folding>
+            <element signature="e#636#668#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/social_django/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14">
+          <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/social_django/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="114" column="28" selection-start-line="114" selection-start-column="28" selection-end-line="114" selection-end-column="28" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django_simple_forum/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="43" column="69" selection-start-line="43" selection-start-column="69" selection-end-line="43" selection-end-column="69" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_simple_forum/static/js/jquery.form.js">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>

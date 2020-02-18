@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'crispy_forms',
     'django_simple_forum',
+    'sorl.thumbnail',
+    'social_django',
 
     'homepage',
     'blog',
@@ -69,6 +71,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'djangoafrica.urls'
@@ -84,10 +88,21 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',  
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 
 WSGI_APPLICATION = 'djangoafrica.wsgi.application'
 
@@ -202,3 +217,13 @@ CKEDITOR_CONFIGS = {
         "codeSnippet_theme": "xcode",
     },
 }
+
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL = 'home'
+ 
+SOCIAL_AUTH_GITHUB_KEY = 'c572ce9f4dd218feff0f'
+SOCIAL_AUTH_GITHUB_SECRET = '38ae8bcc9aef91cfc66af6128557effbee28516b'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '199647621389510'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'fe6a51fa1f4b803d3a4ff63bb0ddbbf9'

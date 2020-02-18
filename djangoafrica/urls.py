@@ -20,6 +20,9 @@ from django.urls import path, include
 # from django.conf.urls import url
 from homepage.views import HomeView 
 from blog.views import ckeditor_form_view, PostDetailView
+from django.contrib.auth import views as auth_views
+
+# from mysite.core import views as core_views
 
 
 
@@ -31,6 +34,10 @@ urlpatterns = [
     name='detail'),
     path('xxxxhas2/', admin.site.urls),
     path('forum/', include('django_simple_forum.urls')),
+    # path('', core_views.home, name='home'),
+    # path (r'^login/$', auth_views.login, name='login'),
+    # path(r'^logout/$', auth_views.logout, name='logout'),
+    path('oauth/', include('social_django.urls', namespace='social')), 
 ] + static(
     settings.STATIC_URL, 
     document_root=settings.STATIC_ROOT
