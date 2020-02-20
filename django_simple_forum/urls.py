@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from . import  views
 
-app_name= 'django_simple_forum'
+app_name = 'django_simple_forum'
 urlpatterns = [
     url(r'^$', views.TopicList.as_view(), name="topic_list"),
     url(r'^register/$', views.IndexView.as_view(), name="signup"),

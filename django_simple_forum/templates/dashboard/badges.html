@@ -1,5 +1,5 @@
 {% extends 'dashboard/dashboard_base.html' %}
-{% load paginate %}
+{% load el_pagination_tags %}
 {% block stage %}
 <div class="content">
   <div class="list">
@@ -8,7 +8,6 @@
     </div>
     <div class="results-slct-items row mt">
       {% paginate 10 badges_list %}
-      {% show_pageitems %}
       <div class="col-md-6 col-xs-6 page-items">
         Per Page
         <select id="pagination_per_page">

@@ -17,7 +17,7 @@ class CanUpdateTopicMixin(object):
 
     def dispatch(self, request, *args, **kwargs):
         user = self.request.user
-        if user.is_anonymous():
+        if user.is_anonymous:
             return redirect(reverse("django_simple_forum:topic_list"))
         pk = kwargs.get("slug")
         self.object = get_object_or_404(Topic, slug=pk)

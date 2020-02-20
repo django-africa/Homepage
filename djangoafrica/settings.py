@@ -50,17 +50,30 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    # 'pagination',
     'ckeditor',
     'ckeditor_uploader',
     'crispy_forms',
     'django_simple_forum',
     'sorl.thumbnail',
     'social_django',
+    'compressor',
+    'el_pagination',
 
     'homepage',
     'blog',
 ]
+
+""""
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.request"
+)
+
+"""
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -73,6 +86,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 
     'social_django.middleware.SocialAuthExceptionMiddleware',
+
 ]
 
 ROOT_URLCONF = 'djangoafrica.urls'
@@ -222,8 +236,3 @@ LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = 'home'
  
-SOCIAL_AUTH_GITHUB_KEY = 'c572ce9f4dd218feff0f'
-SOCIAL_AUTH_GITHUB_SECRET = '38ae8bcc9aef91cfc66af6128557effbee28516b'
-
-SOCIAL_AUTH_FACEBOOK_KEY = '199647621389510'
-SOCIAL_AUTH_FACEBOOK_SECRET = 'fe6a51fa1f4b803d3a4ff63bb0ddbbf9'

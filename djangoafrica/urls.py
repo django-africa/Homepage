@@ -25,7 +25,7 @@ from django.contrib.auth import views as auth_views
 # from mysite.core import views as core_views
 
 
-
+app_name = "django_africa"
 urlpatterns = [
     path('', HomeView.as_view(), name='home_view'),
     path('blog/', ckeditor_form_view, name='ckeditor-form'),

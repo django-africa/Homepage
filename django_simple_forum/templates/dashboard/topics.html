@@ -1,5 +1,5 @@
 {% extends 'dashboard/dashboard_base.html' %}
-{% load paginate %}
+{% load el_pagination_tags %}
 {% block stage %}
 <div class="content">
   <div class="list">
@@ -10,7 +10,6 @@
       <div class="col-md-6 col-xs-6 result-items">
       </div>
       {% paginate 10 topic_list %}
-      {% show_pageitems %}
       <form name="filter_form" id="filter_form" method='post'>
         {% csrf_token %}
         <input type="text" name="search_text" id="search_text" value="{{ request.POST.search_text }}"/>
