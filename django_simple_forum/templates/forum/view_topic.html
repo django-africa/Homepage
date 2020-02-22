@@ -91,6 +91,7 @@
                             <div class="modal-body">
                               <div class="new_topic_container">
                                 <form name="editcommentform" id='editcommentform_{{ comment.id }}' class="edit_comment_form" method="POST" data-href="{% url "django_simple_forum:comment_edit" comment.id%}">
+                                  {% csrf_token %}
                                   <div class="form-group">
                                     <label for="exampleInputEmail1">Add Description</label>
                                     <textarea class="form-control textareacontents mention" name='comment' id='comment'>{{ comment.comment }}</textarea>
@@ -120,7 +121,8 @@
                           </div>
                           <div class="modal-body">
                             <div class="new_topic_container">
-                              <form name="newcommentform" id='newcommentform' class="newcommentform" method="post">
+                              <form name="newcommentform" id='newcommentform' class="newcommentform" method="post" data-href="{% url "django_simple_forum:new_comment" %}">
+                               {% csrf_token %}
                                 <div class="form-group">
                                   <label for="exampleInputEmail1">Add Description</label>
                                   <textarea class="form-control textareacontents mention" name='comment' id='comment'></textarea>
@@ -198,7 +200,8 @@
                     </div>
                     <div class="modal-body">
                       <div class="new_topic_container">
-                        <form name="editcommentform" id='editcommentform' method="post" class="editcommentform">
+                        <form name="editcommentform" id='editcommentform' method="post" class="editcommentform" data-href="{% url "django_simple_forum:comment_edit" comment.id%}">
+                          {% csrf_token %}
                           <div class="form-group">
                             <label for="exampleInputEmail1">Add Description</label>
                             <textarea class="form-control textareacontents mention" name='comment' id='comment'></textarea>
@@ -252,7 +255,8 @@
                     </div>
                     <div class="modal-body">
                       <div class="new_topic_container">
-                        <form name="editcommentform" id='editcommentform' method="post" class="editcommentform">
+                        <form name="editcommentform" id='editcommentform' method="post" class="editcommentform" data-href="{% url "django_simple_forum:comment_edit" comment.id%}">
+                          {% csrf_token %}
                           <div class="form-group">
                             <label for="exampleInputEmail1">Add Description</label>
                             <textarea class="form-control textareacontents mention" name='comment' id='comment'></textarea>
