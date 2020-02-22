@@ -91,6 +91,7 @@
                             <div class="modal-body">
                               <div class="new_topic_container">
                                 <form name="editcommentform" id='editcommentform_{{ comment.id }}' class="edit_comment_form" method="POST" data-href="{% url "django_simple_forum:comment_edit" comment.id%}">
+                                  {% csrf_token %}
                                   <div class="form-group">
                                     <label for="exampleInputEmail1">Add Description</label>
                                     <textarea class="form-control textareacontents mention" name='comment' id='comment'>{{ comment.comment }}</textarea>
@@ -121,6 +122,7 @@
                           <div class="modal-body">
                             <div class="new_topic_container">
                               <form name="newcommentform" id='newcommentform' class="newcommentform" method="post">
+                              {% csrf_token %}
                                 <div class="form-group">
                                   <label for="exampleInputEmail1">Add Description</label>
                                   <textarea class="form-control textareacontents mention" name='comment' id='comment'></textarea>
@@ -199,6 +201,7 @@
                     <div class="modal-body">
                       <div class="new_topic_container">
                         <form name="editcommentform" id='editcommentform' method="post" class="editcommentform">
+                          {% csrf_token %}
                           <div class="form-group">
                             <label for="exampleInputEmail1">Add Description</label>
                             <textarea class="form-control textareacontents mention" name='comment' id='comment'></textarea>
@@ -252,7 +255,8 @@
                     </div>
                     <div class="modal-body">
                       <div class="new_topic_container">
-                        <form name="editcommentform" id='editcommentform' method="post" class="editcommentform">
+                        <form name="editcommentform" id='editcommentform' method="POST" class="editcommentform">
+                          {% csrf_token %}
                           <div class="form-group">
                             <label for="exampleInputEmail1">Add Description</label>
                             <textarea class="form-control textareacontents mention" name='comment' id='comment'></textarea>
@@ -400,7 +404,7 @@
       $('.follow_topic').click(function(e){
         e.preventDefault();
         href = $(this).attr('data-href')
-        $.post(href, {'topic_id': $(this).attr('id')}, function(data){
+        $.post(href, {'topic.id': $(this).attr('id')}, function(data){
           if (data.is_followed){
             alert("You have succesfully followed the topic and will recieve the topic notifications !!!")
             $('.follow_topic').text('Followed')
@@ -433,8 +437,7 @@ function auto_link(link_id){
   $(link_id).each(function(){
     $(this).html( $(this).html().replace(/(@[\w?=&.\/-;#~%-]+(?![\w\s?&.\/;#~%"=-]*>))/gi, '<a href="$1">$1</a> ') );
     $(this).children().each(function(){
-      var user_name = $(this).attr('href').replace(/\@/g,"");
-      var url = "{% url 'django_simple_forum:view_profile' user_name=1234 %}".replace(/1234/, user_name)
+      var url = "{% url 'django_simple_forum:view_profile' user.user.username %}"
       $(this).attr('href', url);
     });
   });
