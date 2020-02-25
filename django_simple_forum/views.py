@@ -5,10 +5,11 @@ from urllib.parse import urlparse
 from datetime import datetime
 
 from django.contrib.auth import logout, login, load_backend
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.core.files import File
 from django.conf import settings
 from django.contrib.auth.hashers import check_password
+from django.contrib.auth import authenticate
 from django.db.models import Q
 from django.http import JsonResponse
 from django.http.response import HttpResponseRedirect, HttpResponse
@@ -61,8 +62,7 @@ class LoginView(FormView):
             else:
                 return redirect('django_simple_forum:topic_list')
         return super(LoginView, self).dispatch(request, *args, **kwargs)
-    
-    
+
     def form_valid(self, form):
         user = form.get_user()
         if user.is_superuser:
@@ -412,7 +412,6 @@ class IndexView(FormView):
         context['topic_list'] = topics
         return context
 
-    
     def form_valid(self, form):
         user = User.objects.create(
             username=form.cleaned_data['username'], email=form.cleaned_data['email'])
@@ -434,9 +433,32 @@ class IndexView(FormView):
         return JsonResponse({'error': True, 'response': form.errors})
 
 
+def user_login(request):
+    if request.method == "POST":
+            form = LoginForm(request.POST)
+            if form.is_valid():
+                email = form.data['username']
+                password = form.cleaned_data['password']
+                username = User.objects.get(email=email).username
+                # print("email is: {} and password is {}".format(username, password))
+                user = authenticate(username=username, password=password)
+                # print(user)
+                if user is not None:
+                    # print("entered this loop")
+                    # print("user is not none")
+                    if user.is_active:
+                        print("user is active")
+                        login(request, user)
+                        return redirect('django_simple_forum:topic_list')
+    else:
+        # print("out of the loop")
+        return render(request, 'forum/topic_list.html')
+
+
 class ForumLoginView(FormView):
     template_name = 'forum/topic_list.html'
     form_class = LoginForm
+    success_url = HttpResponseRedirect("http://djangoafrica.azurewebsites.net/")
 
     def get_context_data(self, **kwargs):
         context = super(ForumLoginView, self).get_context_data(**kwargs)
@@ -444,14 +466,14 @@ class ForumLoginView(FormView):
         context['topic_list'] = topics
         return context
 
-    
     def form_valid(self, form):
         login(self.request, form.get_user())
-        data = {'error': False, 'response': 'Successfully user loggedin'}
-        return JsonResponse(data)
+        # data = {'error': False, 'response': 'Successfully user loggedin'}
+        # return JsonResponse(data)
+        return HttpResponseRedirect("http://djangoafrica.azurewebsites.net/")
 
     def form_invalid(self, form):
-        return JsonResponse({'error': True, 'response': form.errors})
+         return JsonResponse({'error': True, 'response': form.errors})
 
 
 class TopicAdd(LoginRequiredMixin, CreateView):
@@ -498,8 +520,9 @@ class TopicAdd(LoginRequiredMixin, CreateView):
         timeline_activity(user=self.request.user, content_object=self.request.user,
                           namespace='created topic on', event_type="topic-create")
 
-        data = {'error': False, 'response': 'Successfully Created Topic'}
-        return JsonResponse(data)
+        # data = {'error': False, 'response': 'Successfully Created Topic'}
+        # return JsonResponse(data)
+        return redirect('django_simple_forum:topic_list')
 
     def form_invalid(self, form):
         return JsonResponse({'error': True, 'response': form.errors})
@@ -559,7 +582,6 @@ class TopicUpdateView(CanUpdateTopicMixin, UpdateView):
 class TopicList(ListView):
     template_name = 'forum/topic_list.html'
     context_object_name = "topic_list"
-    
 
     def get_queryset(self):
         if self.request.user.is_authenticated:
@@ -568,6 +590,7 @@ class TopicList(ListView):
             query = Q(status='Published')
         queryset = Topic.objects.filter(query).order_by('-created_on')
         return queryset
+
 
 class TopicView(TemplateView):
     template_name = 'forum/view_topic.html'

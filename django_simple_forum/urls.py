@@ -5,7 +5,7 @@ app_name = 'django_simple_forum'
 urlpatterns = [
     url(r'^$', views.TopicList.as_view(), name="topic_list"),
     url(r'^register/$', views.IndexView.as_view(), name="signup"),
-    url(r'^forum/login/$', views.ForumLoginView.as_view(), name="user_login"),
+    url(r'^forum/login/$', views.user_login, name="user_login"),
     url(r'^fb_login/$', views.facebook_login, name="facebook_login"),
     url(r'^gp_login/$', views.google_login, name="google_login"),
 
@@ -41,8 +41,8 @@ urlpatterns = [
     url(r'^comment/votes/(?P<pk>[-\w]+)/up/$', views.CommentVoteUpView.as_view(), name="comment_vote_up"),
     url(r'^comment/votes/(?P<pk>[-\w]+)/down/$', views.CommentVoteDownView.as_view(), name="comment_vote_down"),
 
-    url(r'^dashboard/$', views.LoginView.as_view(), name="dashboard"),
-    # url(r'^dashboard/$', DashboardView.as_view(), name="dashboard"),
+    #url(r'^dashboard/$', views.LoginView.as_view(), name="dashboard"),
+    url(r'^dashboard/$', views.DashboardView.as_view(), name="dashboard"),
     url(r'^logout/$', views.getout, name='out'),
 
     url(r'^dashboard/category/list/$', views.CategoryList.as_view(), name="categories"),

@@ -23,7 +23,7 @@
           <span>Django Simple Forum</span>
         </span>
         <div class="clearfix"></div>
-        <form id="loginform" name="loginform" method="post">
+        <form id="loginform" name="loginform" method="post" data-href="{% url "django_simple_forum:user_login" %}">
           {% csrf_token %}
           <section id='sign_in' class="sign-in">
               <div class="form-group">

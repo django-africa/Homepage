@@ -61,7 +61,7 @@
             <div class="row login_row">
               <div class="login_form col-md-7">
                 
-                  <form name="loginform" id="loginform" method="post">
+                  <form name="loginform" id="loginform" method="post" data-target="{% url 'django_simple_forum:user_login' %}">
                     {% csrf_token %}
                     <div class="form-group">
                       <label for="exampleInputEmail1">Email address</label>
@@ -71,7 +71,7 @@
                       <label for="exampleInputPassword1">Password</label>
                       <input type="password" class="form-control" placeholder="Password" name="password" id='password'>
                     </div>
-                    <button type="submit" class="btn btn-default">Login</button>
+                    <button type="submit" class="btn btn-default" data-target="{% url 'django_simple_forum:topic_list' %} ">Login</button>
                     <div class="forgot_create">
                       <a href="#" data-toggle="modal" data-target="#demo-3" data-dismiss="modal">Forgot Password?</a>
                       <a href="#" class="pull-right" data-toggle="modal" data-target="#demo-2" data-dismiss="modal">Don't have Account</a>
@@ -293,6 +293,7 @@
         $.post('{% url "django_simple_forum:user_login" %}', $('form#loginform').serialize(), function(data){
           if(data.error){
             console.log(data.response)
+            
 
             $('div.error').remove();
             for (var key in data.response) {
@@ -301,7 +302,8 @@
             }
           }
           else{
-            window.location = "{% url 'django_simple_forum:topic_list' %}";
+              alert("successful");
+              window.location = "{% url 'django_simple_forum:topic_list' %}";
           }
         }, 'json');
       });
