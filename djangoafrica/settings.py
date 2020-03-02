@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 import tempfile
+from . import env
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -113,7 +114,7 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.github.GithubOAuth2',
     'social_core.backends.twitter.TwitterOAuth',
     'social_core.backends.facebook.FacebookOAuth2',
-
+    'social_core.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -234,5 +235,13 @@ CKEDITOR_CONFIGS = {
 
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
-LOGIN_REDIRECT_URL = 'topic_list'
- 
+LOGIN_REDIRECT_URL = '/forum/'
+SOCIAL_AUTH_FACEBOOK_KEY = env.facebook_app_id
+SOCIAL_AUTH_FACEBOOK_SECRET = env.facebook_app_secret
+
+SOCIAL_AUTH_GITHUB_KEY = env.git_client_ID
+SOCIAL_AUTH_GITHUB_SECRET = env.git_client_secret
+
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = env.google_client_id
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = env.google_client_secret

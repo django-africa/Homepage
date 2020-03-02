@@ -37,7 +37,8 @@ urlpatterns = [
     # path('', core_views.home, name='home'),
     # path (r'^login/$', auth_views.login, name='login'),
     # path(r'^logout/$', auth_views.logout, name='logout'),
-    path('oauth/', include('social_django.urls', namespace='social')), 
+    path('oauth/', include('social_django.urls', namespace='social')),
+
 ] + static(
     settings.STATIC_URL, 
     document_root=settings.STATIC_ROOT

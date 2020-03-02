@@ -458,7 +458,7 @@ def user_login(request):
 class ForumLoginView(FormView):
     template_name = 'forum/topic_list.html'
     form_class = LoginForm
-    success_url = HttpResponseRedirect("http://djangoafrica.azurewebsites.net/")
+    success_url = HttpResponseRedirect("/")
 
     def get_context_data(self, **kwargs):
         context = super(ForumLoginView, self).get_context_data(**kwargs)
@@ -470,7 +470,7 @@ class ForumLoginView(FormView):
         login(self.request, form.get_user())
         # data = {'error': False, 'response': 'Successfully user loggedin'}
         # return JsonResponse(data)
-        return HttpResponseRedirect("http://djangoafrica.azurewebsites.net/")
+        return HttpResponseRedirect("/")
 
     def form_invalid(self, form):
          return JsonResponse({'error': True, 'response': form.errors})
@@ -500,22 +500,22 @@ class TopicAdd(LoginRequiredMixin, CreateView):
                 else:
                     each = Tags.objects.filter(slug=slugify(tag)).first()
                     topic.tags.add(each)
-        # liked_users_ids = UserTopics.objects.filter(
-        #     topic__category=topic.category, is_like=True).values_list('user', flat=True)
-        # followed_users = UserTopics.objects.filter(
-        #     topic__category=topic.category, is_followed=True).values_list('user', flat=True)
-        # users = UserProfile.objects.filter(user_id__in=set(all_users))
+        liked_users_ids = UserTopics.objects.filter(
+             topic__category=topic.category, is_like=True).values_list('user', flat=True)
+        followed_users = UserTopics.objects.filter(
+             topic__category=topic.category, is_followed=True).values_list('user', flat=True)
+        users = UserProfile.objects.filter(user_id__in=set(all_users))
 
-        # for user in users:
-        #     mto = [user.user.email]
-        #     c = Context({'comment': comment, "user": user.user,
-        #                  'topic_url': settings.HOST_URL + reverse('django_simple_forum:view_topic', kwargs={'slug': topic.slug}),
-        #                  "HOST_URL": settings.HOST_URL})
-        #     t = loader.get_template('emails/new_topic.html')
-        #     subject = "New Topic For The Category" + (topic.category.title)
-        #     rendered = t.render(c)
-        #     mfrom = settings.DEFAULT_FROM_EMAIL
-        #     Memail(mto, mfrom, subject, rendered)
+        for user in users:
+             mto = [user.user.email]
+             c = Context({'comment': comment, "user": user.user,
+                          'topic_url': settings.HOST_URL + reverse('django_simple_forum:view_topic', kwargs={'slug': topic.slug}),
+                          "HOST_URL": settings.HOST_URL})
+             t = loader.get_template('emails/new_topic.html')
+             subject = "New Topic For The Category" + (topic.category.title)
+             rendered = t.render(c)
+             mfrom = settings.DEFAULT_FROM_EMAIL
+             Memail(mto, mfrom, subject, rendered)
 
         timeline_activity(user=self.request.user, content_object=self.request.user,
                           namespace='created topic on', event_type="topic-create")
@@ -582,14 +582,19 @@ class TopicUpdateView(CanUpdateTopicMixin, UpdateView):
 class TopicList(ListView):
     template_name = 'forum/topic_list.html'
     context_object_name = "topic_list"
+    model = Topic
+    queryset = Topic.objects.filter()
 
+"""""
     def get_queryset(self):
         if self.request.user.is_authenticated:
-            query = Q(status='Published')|Q(created_by=self.request.user)
+            query = Q(status='Published') | Q(created_by=self.request.user)
         else:
             query = Q(status='Published')
         queryset = Topic.objects.filter(query).order_by('-created_on')
         return queryset
+"""
+
 
 
 class TopicView(TemplateView):
@@ -615,6 +620,9 @@ class TopicView(TemplateView):
         context['minified_url'] = minified_url
         context['suggested_topics'] = suggested_topics
         return context
+
+
+
 
 
 class TopicDeleteView(CanUpdateTopicMixin, DeleteView):
