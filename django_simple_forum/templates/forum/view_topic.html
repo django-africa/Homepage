@@ -20,12 +20,7 @@
                     <div class="panel-body">
                         {% if not request.user.is_authenticated %}
                             <!-- alert-box -->
-                            div class="alert alert-warning fade show" id="alert" role="alert">
-                            <button type="button" class="close" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <center><strong> Please login to vote</strong></center>
-                            </div>
+                                    <center><strong> Please login to vote</strong></center>
                             <!-- /end -->
                         {% endif %}
                     <div class="view_topic_container">
@@ -118,10 +113,7 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="new_topic_container">
-                                                        <form name="editcommentform"
-                                                              id='editcommentform_{{ comment.id }}'
-                                                              class="edit_comment_form" method="POST"
-                                                              data-href="{% url "django_simple_forum:comment_edit" comment.id %}">
+                                                        <form name="editcommentform" id='editcommentform_{{ comment.id }}' class="edit_comment_form" method="POST" data-href="{% url "django_simple_forum:comment_edit" comment.id %}">
                                                             {% csrf_token %}
                                                             <div class="form-group">
                                                                 <label for="exampleInputEmail1">Add Description</label>
@@ -145,6 +137,20 @@
                                                         </form>
                                                     </div>
                                                 </div>
+                                                <div class="modal-body">
+                                                    <div class="new_topic_container">
+                                                        <form name="deletecommentform" id='deletecommentform_{{ comment.id }}' class="delete_comment_form" method="POST" data-href="{% url "django_simple_forum:comment_delete" comment.id %}">
+                                                            {% csrf_token %}
+
+                                                            <button type="submit" class="btn btn-default">Delete
+                                                            </button>
+                                                            <button type="button" class="btn btn-default"
+                                                                    data-dismiss="modal" aria-label="Close">Cancel
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
                                         </div>
@@ -189,6 +195,7 @@
                                                                     data-dismiss="modal" aria-label="Close">Cancel
                                                             </button>
                                                         </form>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -241,14 +248,17 @@
                                 </div>
                                 <div class="topic_options">
                                     {% if comment.commented_by == request.user %}
+
                                         <div class="topic_count">
-                                            <span class="reply"><i class="fa fa-reply"></i>Edit </span>
+                                            <a href="{% url 'django_simple_forum:comment_edit' comment.id %}">
+                                            <span class="reply"><i class="fa fa-reply"></i>Edit </span> </a>
                                         </div>
                                         <div class="topic_count">
-                                            <a href="#" id="comment_{{ comment.id }}" class="delete-comment"
-                                               data-href="{% url "django_simple_forum:comment_delete" comment.id %}"><span
-                                                    class="reply"><i class="fa fa-reply"></i>Delete</span></a>
+                                            <a class="delete-comment" href="{% url 'django_simple_forum:comment_delete' comment.id %}">
+                                            <span class="reply"><i class="fa fa-reply"></i>Delete</span></a>
                                         </div>
+
+
                                     {% endif %}
                                     <div class="user_options pull-right">
                                         <ul>
@@ -475,7 +485,7 @@ function auto_link(link_id){
   $(link_id).each(function(){
     $(this).html( $(this).html().replace(/(@[\w?=&.\/-;#~%-]+(?![\w\s?&.\/;#~%"=-]*>))/gi, '<a href="$1">$1</a> ') );
     $(this).children().each(function(){
-      var url = " {% url 'django_simple_forum:view_profile' user.username %} "
+      var url = "{# {% url 'django_simple_forum:view_profile' user.username %}#} "
       $(this).attr('href', url);
     });
   });
@@ -486,7 +496,7 @@ $(document).ready(function(e){
   auto_link('.auto_link');
 });
 $('.delete-comment').click(function(e){
-  e.preventDefault();
+  // e.preventDefault();
   href = $(this).attr('data-href');
   id = $(this).attr('id');
   $.post(href, $("form#jobform").serialize(), function(data) {

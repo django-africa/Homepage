@@ -22,6 +22,9 @@ from django.template import Context,loader
 from django.template.defaultfilters import slugify
 from django.utils.crypto import get_random_string
 from django.views.decorators.csrf import csrf_protect
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
+from .models import Comment
 
 try:
     from django.contrib.auth import get_user_model
@@ -406,12 +409,14 @@ class IndexView(FormView):
     template_name = 'forum/topic_list.html'
     form_class = RegisterForm
 
+    csrf_protected_method = method_decorator(csrf_protect)
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         topics = Topic.objects.filter(status='Published')
         context['topic_list'] = topics
         return context
 
+    csrf_protected_method = method_decorator(csrf_protect)
     def form_valid(self, form):
         user = User.objects.create(
             username=form.cleaned_data['username'], email=form.cleaned_data['email'])
@@ -424,7 +429,6 @@ class IndexView(FormView):
         login(self.request, user)
         timeline_activity(user=user, content_object=user,
                           namespace='created on', event_type="user-create")
-
         data = {'error': False, 'response': 'Successfully Created Badge'}
         return JsonResponse(data)
     
@@ -500,22 +504,22 @@ class TopicAdd(LoginRequiredMixin, CreateView):
                 else:
                     each = Tags.objects.filter(slug=slugify(tag)).first()
                     topic.tags.add(each)
-        liked_users_ids = UserTopics.objects.filter(
-             topic__category=topic.category, is_like=True).values_list('user', flat=True)
-        followed_users = UserTopics.objects.filter(
-             topic__category=topic.category, is_followed=True).values_list('user', flat=True)
-        users = UserProfile.objects.filter(user_id__in=set(all_users))
+        # liked_users_ids = UserTopics.objects.filter(
+          #   topic__category=topic.category, is_like=True).values_list('user', flat=True)
+        # followed_users = UserTopics.objects.filter(
+          #   topic__category=topic.category, is_followed=True).values_list('user', flat=True)
+        # users = UserProfile.objects.filter(user_id__in=set(all_users))
 
-        for user in users:
-             mto = [user.user.email]
-             c = Context({'comment': comment, "user": user.user,
-                          'topic_url': settings.HOST_URL + reverse('django_simple_forum:view_topic', kwargs={'slug': topic.slug}),
-                          "HOST_URL": settings.HOST_URL})
-             t = loader.get_template('emails/new_topic.html')
-             subject = "New Topic For The Category" + (topic.category.title)
-             rendered = t.render(c)
-             mfrom = settings.DEFAULT_FROM_EMAIL
-             Memail(mto, mfrom, subject, rendered)
+        # for user in users:
+          #   mto = [user.user.email]
+           #  c = Context({'comment': comment, "user": user.user,
+            #              'topic_url': settings.HOST_URL + reverse('django_simple_forum:view_topic', kwargs={'slug': topic.slug}),
+             #             "HOST_URL": settings.HOST_URL})
+             # t = loader.get_template('emails/new_topic.html')
+             # subject = "New Topic For The Category" + (topic.category.title)
+             #rendered = t.render(c)
+             # mfrom = settings.DEFAULT_FROM_EMAIL
+             #Memail(mto, mfrom, subject, rendered)
 
         timeline_activity(user=self.request.user, content_object=self.request.user,
                           namespace='created topic on', event_type="topic-create")
@@ -602,6 +606,7 @@ class TopicView(TemplateView):
 
     def get_object(self):
         return get_object_or_404(Topic, slug=self.kwargs['slug'])
+
 
     def get_context_data(self, **kwargs):
         context = super(TopicView, self).get_context_data(**kwargs)
@@ -709,6 +714,7 @@ class CommentAdd(LoginRequiredMixin, CreateView):
             comment.mentioned = comment_mentioned_users_list(data)
             comment.save()
 
+        """""
         for user in comment.topic.get_topic_users():
             mto = [user.user.email]
             c = {'comment': comment, "user": user.user,
@@ -729,7 +735,7 @@ class CommentAdd(LoginRequiredMixin, CreateView):
             subject = "New Comment For The Topic " + (comment.topic.title)
             rendered = t.render(c)
             mfrom = settings.DEFAULT_FROM_EMAIL
-            Memail(mto, mfrom, subject, rendered)
+            Memail(mto, mfrom, subject, rendered)"""
 
         timeline_activity(user=self.request.user, content_object=comment,
                           namespace='commented for the', event_type="comment-create")
@@ -752,7 +758,7 @@ class CommentAdd(LoginRequiredMixin, CreateView):
 
 class CommentEdit(LoginRequiredMixin, UpdateView):
     model = Comment
-    template_name = "dashboard/edit_user.html"
+    template_name = "forum/view_topic.html"
     form_class = CommentForm
     slug_field = 'slug'
 
@@ -800,7 +806,7 @@ class CommentEdit(LoginRequiredMixin, UpdateView):
 class CommentDelete(LoginRequiredMixin, DeleteView):
     model = Comment
     slug_field = 'comment_id'
-    template_name = "dashboard/categories.html"
+    template_name = "forum/view_topic.html"
 
     def get_object(self):
         return get_object_or_404(Comment, id=self.kwargs['comment_id'])
@@ -816,6 +822,15 @@ class CommentDelete(LoginRequiredMixin, DeleteView):
         else:
             return JsonResponse({'error': False, 'response': 'Only commented user can delete this comment'})
 
+
+""""
+@login_required
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, pk=comment_id)
+    if Comment.commented_by == request.user:
+        comment.delete()
+    return render(request, 'dashboard/categories.html')
+"""
 
 class TopicLike(LoginRequiredMixin, View):
     model = Topic
@@ -852,6 +867,30 @@ class TopicLike(LoginRequiredMixin, View):
                              'is_like': user_topic.is_like, 'no_of_likes': topic.no_of_likes,
                              'no_of_users': topic.get_topic_users().count()})
 
+    def get(self, request, *args, **kwargs):
+        topic = self.get_object()
+        user_topics = UserTopics.objects.filter(user=request.user, topic=topic)
+        if user_topics:
+            user_topic = user_topics[0]
+        else:
+            user_topic = UserTopics.objects.create(
+                user=request.user, topic=topic)
+        if user_topic.is_like:
+            user_topic.is_like = False
+            topic.no_of_likes = topic.no_of_likes - 1
+            timeline_activity(user=self.request.user, content_object=topic,
+                              namespace='unlike the', event_type="unlike-topic")
+        else:
+            user_topic.is_like = True
+            topic.no_of_likes = topic.no_of_likes + 1
+            timeline_activity(
+                user=self.request.user, content_object=topic, namespace='like the', event_type="like-topic")
+        user_topic.save()
+        topic.save()
+
+        return JsonResponse({'error': False, 'response': 'Successfully liked Category',
+                             'is_like': user_topic.is_like, 'no_of_likes': topic.no_of_likes,
+                             'no_of_users': topic.get_topic_users().count()})
 
 class ForumCategoryList(ListView):
     queryset = ForumCategory.objects.filter(
@@ -946,7 +985,7 @@ class TopicStatus(AdminMixin, View):
 
 class DashboardUserDelete(AdminMixin, DeleteView):
     model = User
-    template_name = "dashboard/topic.html"
+    template_name = "dashboard/topics.html"
     slug_name = "user_id"
 
     def get_success_url(self):
@@ -980,6 +1019,14 @@ class UserStatus(AdminMixin, View):
         user.save()
         return JsonResponse({'error': False, 'response': 'Successfully Updated User Status'})
 
+    def get(self, request, *args, **kwargs):
+        user = self.get_object()
+        if user.is_active:
+            user.is_active = True
+        else:
+            user.is_active = False
+        return JsonResponse({'error': False, 'response': 'user is active'})
+
 
 class UserDetail(AdminMixin, TemplateView):
     template_name = 'dashboard/view_user.html'
@@ -1009,6 +1056,28 @@ class TopicFollow(LoginRequiredMixin, View):
         return get_object_or_404(Topic, slug=self.kwargs['slug'])
 
     def post(self, request, *args, **kwargs):
+        topic = self.get_object()
+        user_topics = UserTopics.objects.filter(user=request.user, topic=topic)
+        if user_topics:
+            user_topic = user_topics[0]
+        else:
+            user_topic = UserTopics.objects.create(
+                user=request.user, topic=topic)
+        if user_topic.is_followed:
+            user_topic.is_followed = False
+            user_topic.followed_on = datetime.now()
+            timeline_activity(user=self.request.user, content_object=topic,
+                              namespace='unfollow the', event_type="unfollow-topic")
+        else:
+            user_topic.is_followed = True
+            user_topic.followed_on = datetime.now()
+            timeline_activity(user=self.request.user, content_object=topic,
+                              namespace='follow the', event_type="follow-topic")
+        user_topic.save()
+        return JsonResponse({'error': False, 'response': 'Successfully Followed the topic',
+                             'is_followed': user_topic.is_followed})
+
+    def get(self, request, *args, **kwargs):
         topic = self.get_object()
         user_topics = UserTopics.objects.filter(user=request.user, topic=topic)
         if user_topics:
@@ -1133,7 +1202,15 @@ class UserProfilePicView(LoginRequiredMixin, View):
             return JsonResponse({'error': False, 'response': 'Successfully uploaded'})
         else:
             return JsonResponse({'error': True, 'response': 'Please Upload Your Profile pic'})
-
+    """
+    def get(self, request, *args, **kwargs):
+        if 'profile_pic' == None:
+            self.post()
+            return JsonResponse({'error': False, 'response': 'Successfully uploaded'})
+        else:
+            self.post()
+            return JsonResponse({'error': True, 'response': 'Please Upload Your Profile pic'})
+    """
 
 class UserSettingsView(LoginRequiredMixin, View):
     model = UserProfile
@@ -1394,7 +1471,7 @@ class UserChangePassword(LoginRequiredMixin, FormView):
 
 
 class ForgotPasswordView(FormView):
-    template_name = 'form/topic_list.html'
+    template_name = 'forum/topic_list.html'
     form_class = ForgotPasswordForm
 
     def form_valid(self, form):

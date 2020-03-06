@@ -4,13 +4,13 @@ from . import  views
 app_name = 'django_simple_forum'
 urlpatterns = [
 
-    # path(r'^$', views.TopicList.as_view(), name="topic_list"),
-    # path(r'^register/$', views.IndexView.as_view(), name="signup"),
+    path(r'', views.TopicList.as_view(), name="topic_list"),
+    path(r'register/', views.IndexView.as_view(), name="signup"),
     # path(r'^forum/login/$', views.user_login, name="user_login"),
     # path(r'^fb_login/$', views.facebook_login, name="facebook_login"),
     # path(r'^gp_login/$', views.google_login, name="google_login"),
-    path('', views.TopicList.as_view(), name="topic_list"),
-    path('register/', views.IndexView.as_view(), name="signup"),
+    # path('', views.TopicList.as_view(), name="topic_list"),
+    # path('register/', views.IndexView.as_view(), name="signup"),
     path('forum/login/', views.ForumLoginView.as_view(), name="user_login"),
     # path('fb_login/', views.facebook_login, name="facebook_login"),
     # path('gp_login/', views.google_login, name="google_login"),
@@ -28,13 +28,14 @@ urlpatterns = [
     path('change-password/', views.UserChangePassword.as_view(), name="user_change_password"),
     path('forgot-password/', views.ForgotPasswordView.as_view(), name="forgot_password"),
     path('comment/delete/<int:comment_id>/',views.CommentDelete.as_view(), name="comment_delete"),
+    # path('comment/delete/<int:comment_id>/', views.delete_comment, name="comment_delete"),
     path('comment/edit/<int:comment_id>', views.CommentEdit.as_view(), name="comment_edit"),
 
     path('categories/', views.ForumCategoryList.as_view(), name="forum_categories"),
     path('tags/', views.ForumTagsList.as_view(), name="forum_tags"),
     path('badges/', views.ForumBadgeList.as_view(), name="forum_badges"),
     path('profile/', views.UserProfileView.as_view(), name="user_profile"),
-    path('upload/profile-pic/', views.UserProfilePicView.as_view(), name="user_profile_pic"),
+    # path('upload/profile-pic/', views.UserProfilePicView.as_view(), name="user_profile_pic"),
     path('send-mail/settings/', views.UserSettingsView.as_view(), name="user_settings"),
 
     path('category/<slug:slug>', views.ForumCategoryView.as_view(), name="forum_category_detail"),
@@ -47,11 +48,11 @@ urlpatterns = [
     path('comment/votes/<int:pk>/down/', views.CommentVoteDownView.as_view(), name="comment_vote_down"),
 
 
-    #url(r'^dashboard/$', views.LoginView.as_view(), name="dashboard"),
-    path(r'^dashboard/$', views.DashboardView.as_view(), name="dashboard"),
-    path(r'^logout/$', views.getout, name='out'),
+    #url('dashboard/', views.LoginView.as_view(), name="dashboard"),
+    path(r'dashboard/', views.DashboardView.as_view(), name="dashboard"),
+    # path('logout/', views.getout, name='out'),
 
-    path('dashboard/', views.LoginView.as_view(), name="dashboard"),
+    # path('dashboard/', views.LoginView.as_view(), name="dashboard"),
     # path('dashboard/$', DashboardView.as_view(), name="dashboard"),
     path('logout/', views.getout, name='out'),
 

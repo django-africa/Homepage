@@ -105,7 +105,7 @@
           <div class="modal-body">
             <div class="row login_row">
               <div class="login_form col-md-7">
-                  <form name="registerform" id="registerform" method="post">
+                  <form name="registerform" id="registerform" method="post" action="{% url 'django_simple_forum:signup' %}">
                     {% csrf_token %}
                     <div class="form-group">
                       <label for="exampleInputEmail1">Email address</label>
@@ -288,7 +288,7 @@
           }
         }, 'json');
       });
-      $.('form#loginform').on("submit", (function(e)
+      $('form#loginform').on("submit", (function(e)
       {
         e.preventDefault();
         $.post('{% url "django_simple_forum:user_login" %}',$('form#Loginform').serialize() ,function(data){

@@ -233,6 +233,7 @@ CKEDITOR_CONFIGS = {
     },
 }
 
+HOST_URL = '/forum/'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = '/forum/'
