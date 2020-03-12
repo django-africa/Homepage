@@ -964,6 +964,24 @@ class TopicDetail(AdminMixin, TemplateView):
         return context
 
 
+
+class DashboardUserDelete(AdminMixin, DeleteView):
+    model = User
+    template_name = "dashboard/topics.html"
+    slug_name = "user_id"
+
+    def get_success_url(self):
+        return redirect(reverse('django_simple_forum:users'))
+
+    def get_object(self):
+        return get_object_or_404(User, id=self.kwargs['user_id'])
+
+    def post(self, request, *args, **kwargs):
+        user = self.get_object()
+        user.delete()
+        return JsonResponse({'error': False, 'response': 'Successfully Deleted User'})
+
+
 class TopicStatus(AdminMixin, View):
     model = Topic
     slug_field = 'slug'
@@ -982,36 +1000,6 @@ class TopicStatus(AdminMixin, View):
         topic.save()
         return JsonResponse({'error': False, 'response': 'Successfully Updated Topic Status'})
 
-    def get(self, request, *args, **kwargs):
-        topic = self.get_object()
-        if topic.status == 'Draft':
-            topic.status = 'Published'
-            return JsonResponse({'error': False, 'status': topic.status})
-        elif topic.status == 'Published':
-            topic.status = 'Draft'
-            return JsonResponse({'error': False, 'status': topic.status})
-
-        else:
-            topic.status = 'Disabled'
-            return JsonResponse({'error': False, 'status': topic.status})
-        topic.save()
-        return JsonResponse({'error': False, 'response': 'Successfully Updated Topic Status'})
-
-class DashboardUserDelete(AdminMixin, DeleteView):
-    model = User
-    template_name = "dashboard/topics.html"
-    slug_name = "user_id"
-
-    def get_success_url(self):
-        return redirect(reverse('django_simple_forum:users'))
-
-    def get_object(self):
-        return get_object_or_404(User, id=self.kwargs['user_id'])
-
-    def post(self, request, *args, **kwargs):
-        user = self.get_object()
-        user.delete()
-        return JsonResponse({'error': False, 'response': 'Successfully Deleted User'})
 
 
 class UserStatus(AdminMixin, View):
@@ -1062,7 +1050,8 @@ class UserDetail(AdminMixin, TemplateView):
         return context
 
 
-class TopicFollow(LoginRequiredMixin, View):
+class \
+        TopicFollow(LoginRequiredMixin, View):
     model = Topic
     slug_field = 'slug'
 
@@ -1090,7 +1079,7 @@ class TopicFollow(LoginRequiredMixin, View):
         user_topic.save()
         return JsonResponse({'error': False, 'response': 'Successfully Followed the topic',
                              'is_followed': user_topic.is_followed})
-
+    """"
     def get(self, request, *args, **kwargs):
         topic = self.get_object()
         user_topics = UserTopics.objects.filter(user=request.user, topic=topic)
@@ -1112,7 +1101,7 @@ class TopicFollow(LoginRequiredMixin, View):
         user_topic.save()
         return JsonResponse({'error': False, 'response': 'Successfully Followed the topic',
                              'is_followed': user_topic.is_followed})
-
+    """
 
 class TopicVoteUpView(LoginRequiredMixin, View):
 

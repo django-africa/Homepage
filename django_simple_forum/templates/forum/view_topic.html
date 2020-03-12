@@ -33,7 +33,7 @@
                                 {% endif %}
                                 <div class="follow_votes">
                                     {% if request.user.is_authenticated %}
-                                        <span class="follow"><a href="#" class="follow_topic"
+                                        <span class="follow"><a href="{% url "django_simple_forum:follow_topic" topic.slug %}" class="follow_topic"
                                                                 data-href="{% url "django_simple_forum:follow_topic" topic.slug %}">{% if topic.id|is_topic_followed:request.user.id %}
                                             Followed{% else %}Follow{% endif %}</a></span>
                                     {% endif %}
@@ -356,6 +356,30 @@
     /**
 <script type="text/javascript">
 
+$.ajaxSetup({
+     beforeSend: function(xhr, settings) {
+         function getCookie(name) {
+             var cookieValue = null;
+             if (document.cookie && document.cookie != '') {
+                 var cookies = document.cookie.split(';');
+                 for (var i = 0; i < cookies.length; i++) {
+                     var cookie = jQuery.trim(cookies[i]);
+                     // Does this cookie string begin with the name we want?
+                     if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                         cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                         break;
+                     }
+                 }
+             }
+             return cookieValue;
+         }
+         if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+             // Only send the token to relative URLs i.e. locally.
+             xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+         }
+     }
+});
+
       $('form.newcommentform').submit(function(e){
         e.preventDefault();
         var str = $(this).find('.mention').val();
@@ -363,6 +387,7 @@
         var mentioned_users = str.match(pattern);
         $('<input>', {
           type: 'hidden',
+          headers: { "X-CSRFToken": token},
           id: 'mentioned_user',
           name: 'mentioned_user',
           value: mentioned_users
@@ -395,6 +420,7 @@
         $('<input>', {
           type: 'hidden',
           id: 'mentioned_user',
+           headers: { "X-CSRFToken": token},
           name: 'mentioned_user',
           value: mentioned_users
         }).appendTo('form.editcommentform');
@@ -425,6 +451,7 @@
         var mentioned_users = str.match(pattern);
         $('<input>', {
           type: 'hidden',
+            headers: { "X-CSRFToken": token},
           id: 'mentioned_user',
           name: 'mentioned_user',
           value: mentioned_users
