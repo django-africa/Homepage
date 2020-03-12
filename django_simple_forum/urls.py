@@ -35,7 +35,7 @@ urlpatterns = [
     path('tags/', views.ForumTagsList.as_view(), name="forum_tags"),
     path('badges/', views.ForumBadgeList.as_view(), name="forum_badges"),
     path('profile/', views.UserProfileView.as_view(), name="user_profile"),
-    # path('upload/profile-pic/', views.UserProfilePicView.as_view(), name="user_profile_pic"),
+    path('upload/profile-pic/', views.UserProfilePicView.as_view(), name="user_profile_pic"),
     path('send-mail/settings/', views.UserSettingsView.as_view(), name="user_settings"),
 
     path('category/<slug:slug>', views.ForumCategoryView.as_view(), name="forum_category_detail"),

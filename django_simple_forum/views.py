@@ -587,7 +587,7 @@ class TopicList(ListView):
     template_name = 'forum/topic_list.html'
     context_object_name = "topic_list"
     model = Topic
-    queryset = Topic.objects.filter()
+    queryset = Topic.objects.filter().order_by('-created_on')
 
 """""
     def get_queryset(self):
@@ -982,6 +982,20 @@ class TopicStatus(AdminMixin, View):
         topic.save()
         return JsonResponse({'error': False, 'response': 'Successfully Updated Topic Status'})
 
+    def get(self, request, *args, **kwargs):
+        topic = self.get_object()
+        if topic.status == 'Draft':
+            topic.status = 'Published'
+            return JsonResponse({'error': False, 'status': topic.status})
+        elif topic.status == 'Published':
+            topic.status = 'Draft'
+            return JsonResponse({'error': False, 'status': topic.status})
+
+        else:
+            topic.status = 'Disabled'
+            return JsonResponse({'error': False, 'status': topic.status})
+        topic.save()
+        return JsonResponse({'error': False, 'response': 'Successfully Updated Topic Status'})
 
 class DashboardUserDelete(AdminMixin, DeleteView):
     model = User
