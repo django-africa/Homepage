@@ -1,0 +1,23 @@
+{% extends 'forum/base.html' %}
+
+            <div class="modal-body">
+            <div class="row login_row">
+              <div class="login_form col-md-7">
+
+                  <form name="loginform" id="loginform" method="post" >
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Email address</label>
+                      <input type="email" class="form-control" placeholder="Email" id="username" name="username">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Password</label>
+                      <input type="password" class="form-control" placeholder="Password" name="password" id='password'>
+                    </div>
+                    <button type="submit" class="btn btn-default" >Login</button>
+                    <div class="forgot_create">
+                      <a href="#" data-toggle="modal" data-target="#demo-3" data-dismiss="modal">Forgot Password?</a>
+                      <a href="#" class="pull-right" data-toggle="modal" data-target="#demo-2" data-dismiss="modal">Don't have Account</a>
+                    </div>
+                  </form>
+              </div>

@@ -3,11 +3,17 @@ from . import  views
 
 app_name = 'django_simple_forum'
 urlpatterns = [
-    path('', views.TopicList.as_view(), name="topic_list"),
-    path('register/', views.IndexView.as_view(), name="signup"),
+
+    path(r'', views.TopicList.as_view(), name="topic_list"),
+    path(r'register/', views.IndexView.as_view(), name="signup"),
+    # path(r'^forum/login/$', views.user_login, name="user_login"),
+    # path(r'^fb_login/$', views.facebook_login, name="facebook_login"),
+    # path(r'^gp_login/$', views.google_login, name="google_login"),
+    # path('', views.TopicList.as_view(), name="topic_list"),
+    # path('register/', views.IndexView.as_view(), name="signup"),
     path('forum/login/', views.ForumLoginView.as_view(), name="user_login"),
-    path('fb_login/', views.facebook_login, name="facebook_login"),
-    path('gp_login/', views.google_login, name="google_login"),
+    # path('fb_login/', views.facebook_login, name="facebook_login"),
+    # path('gp_login/', views.google_login, name="google_login"),
 
     path('topic/add/', views.TopicAdd.as_view(), name="new_topic"),
     path('topic/<slug:slug>/update/', views.TopicUpdateView.as_view(), name="topic_update"),
@@ -21,8 +27,8 @@ urlpatterns = [
     path('user/profile/<slug:user_name>/', views.ProfileView.as_view(), name="view_profile"),
     path('change-password/', views.UserChangePassword.as_view(), name="user_change_password"),
     path('forgot-password/', views.ForgotPasswordView.as_view(), name="forgot_password"),
-    path('comment/delete/<int:comment_id>/',
-        views.CommentDelete.as_view(), name="comment_delete"),
+    path('comment/delete/<int:comment_id>/',views.CommentDelete.as_view(), name="comment_delete"),
+    # path('comment/delete/<int:comment_id>/', views.delete_comment, name="comment_delete"),
     path('comment/edit/<int:comment_id>', views.CommentEdit.as_view(), name="comment_edit"),
 
     path('categories/', views.ForumCategoryList.as_view(), name="forum_categories"),
@@ -41,7 +47,12 @@ urlpatterns = [
     path('comment/votes/<int:pk>/up/', views.CommentVoteUpView.as_view(), name="comment_vote_up"),
     path('comment/votes/<int:pk>/down/', views.CommentVoteDownView.as_view(), name="comment_vote_down"),
 
-    path('dashboard/', views.LoginView.as_view(), name="dashboard"),
+
+    #url('dashboard/', views.LoginView.as_view(), name="dashboard"),
+    path(r'dashboard/', views.DashboardView.as_view(), name="dashboard"),
+    # path('logout/', views.getout, name='out'),
+
+    # path('dashboard/', views.LoginView.as_view(), name="dashboard"),
     # path('dashboard/$', DashboardView.as_view(), name="dashboard"),
     path('logout/', views.getout, name='out'),
 

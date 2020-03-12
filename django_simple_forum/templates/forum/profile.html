@@ -19,8 +19,10 @@
                         {% ifequal request.user.id|slugify user_profile.user.id|slugify %}
                         <span class="new_logo file_upload"><a href="#"><i class="fa fa-camera" aria-hidden="true"></i></a></span>
                         <form name="profilepicform" id="profilepicform"><input type="file" id='file_input' name="profile_pic" id="profile_pic" style="display: none;" onchange="javascript: submitform()"><input type="submit" id='submit' name="submit" style="display: none;">
+                        {% csrf_token %}
                         </form>
                         <form name="settingsform" id="settingsform"><input type="checkbox" id='sending_mail' name="sending_mail" id="sending_mail" {% if user_profile.send_mailnotifications %}checked{% endif %} value="True">Send Email Notifications<input type="submit" id='submit' name="submit" style="display: none;">
+                        {% csrf_token %}
                         </form>
                         {% endifequal %}
                       </div>
@@ -76,7 +78,7 @@
                             </div>
                             <div class="topic_options">
                              <span class="category"><a href="#" class="gaming">{{ topic.category.title }} </a></span><span class="activity">Updated on {{ topic.updated_on }}</span>
-                            <span class="reply"><a href="#"><i class="fa fa-reply"></i>Replies 123 </a></span>
+                            <span class="reply"><a href="#"><i class="fa fa-reply"></i>{{ topic.get_all_comments|length }} </a></span>
                             <span class="views"><a href="#"><i class="fa fa-eye"></i> Views {{ topic.no_of_views }} </a></span>
                             <span class="likes"><a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Likes {{ topic.no_of_likes }} </a></span>
                             </div>
@@ -106,7 +108,7 @@
                             </div>
                             <div class="topic_options">
                              <span class="category"><a href="#" class="gaming">{{ topic.category.title }} </a></span><span class="activity">Updated on {{ topic.updated_on }}</span>
-                            <span class="reply"><a href="#"><i class="fa fa-reply"></i>Replies 123 </a></span>
+                            <span class="reply"><a href="#"><i class="fa fa-reply"></i>{{ topic.get_all_comments|length }} </a></span>
                             <span class="views"><a href="#"><i class="fa fa-eye"></i> Views {{ topic.no_of_views }} </a></span>
                             <span class="likes"><a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Likes {{ topic.no_of_likes }} </a></span>
                             </div>
@@ -136,7 +138,7 @@
                             </div>
                             <div class="topic_options">
                              <span class="category"><a href="#" class="gaming">{{ topic.category.title }} </a></span><span class="activity">Updated on {{ topic.updated_on }}</span>
-                            <span class="reply"><a href="#"><i class="fa fa-reply"></i>Replies 123 </a></span>
+                            <span class="reply"><a href="#"><i class="fa fa-reply"></i>{{ topic.get_all_comments|length }} </a></span>
                             <span class="views"><a href="#"><i class="fa fa-eye"></i> Views {{ topic.no_of_views }} </a></span>
                             <span class="likes"><a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Likes {{ topic.no_of_likes }} </a></span>
                             </div>
@@ -169,7 +171,7 @@
                             </div>
                             <div class="topic_options">
                              <span class="category"><a href="#" class="gaming">{{ topic.category.title }} </a></span><span class="activity">Updated on {{ topic.updated_on }}</span>
-                            <span class="reply"><a href="#"><i class="fa fa-reply"></i>Replies 123 </a></span>
+                            <span class="reply"><a href="#"><i class="fa fa-reply"></i>{{ topic.get_all_comments|length }} </a></span>
                             <span class="views"><a href="#"><i class="fa fa-eye"></i> Views {{ topic.no_of_views }} </a></span>
                             <span class="likes"><a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Likes {{ topic.no_of_likes }} </a></span>
                             </div>
@@ -194,8 +196,7 @@
 {% endblock %}
 {% block extra_js %}
 <script type="text/javascript">
-
-  $('.file_upload').click(function(e){
+    $('.file_upload').click(function(e){
     $('#file_input').click();
   });
   $('body').append('<div id="ajaxBusy"><p><img src="http://d2pt99vxm3n8bc.cloudfront.net/static/img/loader-gif.gif" height="100px" width="100px"></p></div>');
@@ -219,9 +220,7 @@
 
   function submitform(){
       $('form#profilepicform').submit();
-  }
-
-  $('form#profilepicform').ajaxForm({
+  }$('form#profilepicform').ajaxForm({
     type:'POST',
     dataType:'json',
     url: "{% url "django_simple_forum:user_profile_pic" %}",
@@ -235,7 +234,7 @@
       }
     }
   });
-  $('#sending_mail').click(function(e){
+$('#sending_mail').click(function(e){
     e.preventDefault();
     $.post("{% url 'django_simple_forum:user_settings' %}", {'sending_mail': $(this).val()}, function(data){
         if (data.error == false) {

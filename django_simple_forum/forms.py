@@ -9,16 +9,11 @@ from .models import ForumCategory, Badge, Topic, Comment, UserProfile
 from django.template.defaultfilters import slugify
 
 
-class LoginForm(AuthenticationForm):
+class LoginForm(forms.ModelForm):
 
-    def clean_username(self):
-        email = self.cleaned_data['username']
-        user = User.objects.filter(email=email)
-        if not user:
-            raise forms.ValidationError('Email is not registered.')
-        elif not user[0].is_active:
-            raise forms.ValidationError('Your account is not activated yet!')
-        return email
+    class Meta:
+        model = User
+        fields = ['email', 'password']
 
 
 class RegisterForm(forms.ModelForm):
